@@ -143,7 +143,7 @@ body {
 }
 
 .li-lx {
-  padding-left:21px;
+  padding-left:20px;
   height: 38px;
 }
 
@@ -170,7 +170,7 @@ body {
   padding: 5px 0;
 }
 .links-lx{
-  padding-left: 21px;
+  padding-left: 20px;
   height: 30px;
 }
 
@@ -188,10 +188,13 @@ body {
   height: auto;
   padding: 5px 0;
   position: relative;
+    border-bottom:1px solid #D6DBE7;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 .ask-lx {
-  padding-left: 21px;
+
   margin-top: 22px;
 }
 
@@ -211,7 +214,6 @@ body {
 }
 
 .answer-lx {
-  padding-left: 21px;
   margin-top: 22px;
 }
 
@@ -225,7 +227,6 @@ body {
 }
 
 .accepted-lx {
-  padding-left: 21px;
   margin-top: 22px;
 }
 
@@ -242,11 +243,8 @@ body {
   color: #75C2FB
 }
 .rights-lx {
-  padding-left: 21px;
-    position: relative;
-
-  bottom: 10px;
-    min-height: 0;
+  padding-left: 20px;
+    padding-top: 20px;
 
 }
 

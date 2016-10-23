@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class UserProfile(models.Model):
     belong_to = models.OneToOneField(to=User, related_name='profile')
     profile_images = models.FileField(upload_to='user_profile_images', null=True, blank=True)
@@ -22,6 +23,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.belong_to
 
+
 class Question(models.Model):
     questioner = models.ForeignKey(to=UserProfile, related_name='user_question')
     title = models.CharField(max_length=100)
@@ -31,6 +33,7 @@ class Question(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Answer(models.Model):
     belong_to_question = models.ForeignKey(to=Question, related_name='question_answer')
