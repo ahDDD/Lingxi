@@ -21,17 +21,18 @@ class UserProfile(models.Model):
     full_profile = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.belong_to
+        return str(self.belong_to)
 
 
 class Question(models.Model):
     questioner = models.ForeignKey(to=UserProfile, related_name='user_question')
     title = models.CharField(max_length=100)
-    detail = models.CharField(max_length=6000, null=True)
+    detail = models.CharField(max_length=6000, null=True, blank=True)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    # def __str__(self):
+    def __unicode__(self):
         return self.title
 
 
@@ -42,5 +43,6 @@ class Answer(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def __unicode__(self):
+    # def __str__(self):
         return u'%s的答案' % self.answerer

@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <title>details</title>
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
     <body>
-        <div class="header-lx">
-            <div class="img-search">
+        <div class="header-lx ui grid">
+            <div class="img-search nine wide column">
                 <div class="img">
                     <img src="{% static 'images/logo.png' %}" style="height:100%" alt="灵犀"/>
                 </div>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="menu-lx">
+            <div class="menu-lx four wide column">
                 <ul class="menu-ul">
                     <li class="menu-text">新手帮助</li>
                     <li class="menu-text">关于我们</li>
@@ -29,7 +29,7 @@
                     <li class="menu-text">联系我们</li>
                 </ul>
             </div>
-            <div class="message">
+            <div class="message three wide column">
                 <div class="img-head">
                     <img src="{% static 'images/Ellipse 1.png' %}" alt=""/>
                 </div>
@@ -41,8 +41,8 @@
             </div>
 
         </div>
-        <div class="content-lx">
-            <div class="left-lx">
+        <div class="content-lx ui grid">
+            <div class="left-lx three wide column">
                 <div class="btn-ask">
                     <button type="button" name="button" class="btn-ask-question">
                         <img src="{% static 'images/jiahao.png' %}" alt=""/>
@@ -107,85 +107,63 @@
                 </div>
             </div>
 
-            <div class="middle-lx"></div>
+            <div class="middle-lx ten wide column"></div>
 
-            <div class="right-lx">
+            <div class="right-lx three wide column">
                 <div class="questions-div">
                     <div>
                         <div class="question-title-lx">问题</div>
-                        <div class="number-data-lx">3879</div>
+                        <div class="number-data-lx">{{ questions|length }}</div>
                     </div>
                 </div>
                 <div class="members-div">
                     <div>
                         <div class="question-title-lx">成员</div>
-                        <div class="number-data-lx">10,930</div>
+                        <div class="number-data-lx">{{ user_profile|length }}</div>
                     </div>
                 </div>
-                <div class="tags-div">
-                    <div class="related-tags">
-                        相关标签
-                    </div>
-                    <div class="one-tag">
-                        <span class="tag-span-lx">生活</span>
-                        <span class="tag-span-number">×2707</span>
-                    </div>
-                    <div class="one-tag">
-                        <span class="tag-span-lx">财富</span>
-                        <span class="tag-span-number">×1988</span>
-                    </div>
-                    <div class="one-tag">
-                        <span class="tag-span-lx">努力</span>
-                        <span class="tag-span-number">×1409</span>
-                    </div>
-                    <div class="one-tag">
-                        <span class="tag-span-lx">吸引力</span>
-                        <span class="tag-span-number">×923</span>
-                    </div>
-                    <div class="one-tag">
-                        <span class="tag-span-lx">兴趣</span>
-                        <span class="tag-span-number">×765</span>
-                    </div>
-                    <div class="one-tag">
-                        <span class="tag-span-lx">设计师</span>
-                        <span class="tag-span-number">×489</span>
-                    </div>
-                    <a href="#" class="more-related-tags">更多相关标签</a>
-                </div>
+{#                <div class="tags-div">#}
+{#                    <div class="related-tags">#}
+{#                        相关标签#}
+{#                    </div>#}
+{#                    <div class="one-tag">#}
+{#                        <span class="tag-span-lx">生活</span>#}
+{#                        <span class="tag-span-number">×2707</span>#}
+{#                    </div>#}
+{#                    <div class="one-tag">#}
+{#                        <span class="tag-span-lx">财富</span>#}
+{#                        <span class="tag-span-number">×1988</span>#}
+{#                    </div>#}
+{#                    <div class="one-tag">#}
+{#                        <span class="tag-span-lx">努力</span>#}
+{#                        <span class="tag-span-number">×1409</span>#}
+{#                    </div>#}
+{#                    <div class="one-tag">#}
+{#                        <span class="tag-span-lx">吸引力</span>#}
+{#                        <span class="tag-span-number">×923</span>#}
+{#                    </div>#}
+{#                    <div class="one-tag">#}
+{#                        <span class="tag-span-lx">兴趣</span>#}
+{#                        <span class="tag-span-number">×765</span>#}
+{#                    </div>#}
+{#                    <div class="one-tag">#}
+{#                        <span class="tag-span-lx">设计师</span>#}
+{#                        <span class="tag-span-number">×489</span>#}
+{#                    </div>#}
+{#                    <a href="#" class="more-related-tags">更多相关标签</a>#}
+{#                </div>#}
 
                 <div class="hot-questions-div">
                     <div class="new-hot-questions">新的热点问题</div>
-                    <div class="hot-question-li">
-                        <p class="hot-question-p">
-                            <a href="#">怎样在未来 5 年内变成亿万富翁？</a>
-                        </p>
-                    </div>
-                    <div class="hot-question-li">
-                        <p class="hot-question-p">
-                            <a href="#">什么是设计工作中最吸引人的地方？</a>
-                        </p>
-                    </div>
-                    <div class="hot-question-li">
-                        <p class="hot-question-p">
-                            <a href="#">如何爱你的生活？</a>
-                        </p>
-                    </div>
-                    <div class="hot-question-li">
-                        <p class="hot-question-p">
-                            <a href="#">怎样在未来 5 年内变成亿万富翁？</a>
-                        </p>
-                    </div>
-                    <div class="hot-question-li">
-                        <p class="hot-question-p">
-                            <a href="#">什么是设计工作中最吸引人的地方？</a>
-                        </p>
-                    </div>
-                    <div class="hot-question-li">
-                        <p class="hot-question-p">
-                            <a href="#">如何爱你的生活？</a>
-                        </p>
-                    </div>
-
+                    {% for q in questions %}
+                        <div class="hot-question-li">
+                            <p class="hot-question-p" style="background-image: url('../../upload/{{ q.questioner.profile_images }}');">
+                                <a href="#">{{ q.title }}</a>
+                            </p>
+                            <img class="ui avatar image" src="/images/wireframe/square-image.png">
+                                <span>Username</span>
+                        </div>
+                    {% endfor %}
                 </div>
 
             </div>
