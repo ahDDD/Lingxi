@@ -23,19 +23,19 @@
                 </div>
             </div>
             <div class="eight wide column">
-              <div class="form-area">
+              <div class="ui basic right floated segment" id="app">
                 <div class="ui inverted text menu log">
-                    <div class="item">
+                    <div class="item" :class="{ active: is_signin }" @click="change('singin')">
                         <a href="#">SIGN IN</a>
                     </div>
                     <div class="item">
                         or
                     </div>
-                    <div class="item">
+                    <div class="item" :class="{ active: is_signout }" @click="change('singout')">
                         <a href="#">SIGN UP</a>
                     </div>
                 </div>
-                <div class="ui form">
+                <form class="ui form" v-show="is_signin">
                     <div class="fields">
                         <div class="field">
                             <div class="ui icon input">
@@ -52,8 +52,40 @@
                             <label style="margin:15px;"><a href="#" style="color:lightgray;font-size:14px;">Forget password?</a></label>
                         </div>
                     </div>
-                </div>
-                <button type="button" name="button" class="btn-sign">Sign In</button>
+                    <button type="submit" name="button" class="ui inverted button right floated">Sign In</button>
+                </form>
+                <form class="ui form" v-show="is_signout">
+                    <div class="fields">
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="email" name="user_email" placeholder="Email" style="background:transparent;border:0;border-bottom:1px solid #ffffff;border-radius:0px;">
+                                <i class="mail outline inverted icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" placeholder="Username" style="background:transparent;border:0;border-bottom:1px solid #ffffff;border-radius:0px;">
+                                <i class="user inverted icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fields">
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="email" name="user_email" placeholder="Password" style="background:transparent;border:0;border-bottom:1px solid #ffffff;border-radius:0px;">
+                                <i class="key outline inverted icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" placeholder="Password" style="background:transparent;border:0;border-bottom:1px solid #ffffff;border-radius:0px;">
+                                <i class="key inverted icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="ui right floated inverted button ">Sign In</button>
+                </form>
+
 
               </div>
 
@@ -80,6 +112,26 @@
             </div>
         </div>
     </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                is_signin: true,
+                is_signout: false,
+            },
+            methods: {
+                change: function(tag){
+                    if (tag=="singin") {
+                        this.is_signin = true;
+                        this.is_signout = false;
+                    } else {
+                        this.is_signin = false;
+                        this.is_signout = true;
+                    };
+                }
+            },
+        })
+    </script>
 </body>
 
 </html>
