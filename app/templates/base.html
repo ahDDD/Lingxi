@@ -8,41 +8,61 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
     <body>
-        <div class="header-lx ui grid">
-            <div class="img-search nine wide column">
-                <div class="img">
-                    <img src="{% static 'images/logo.png' %}" style="height:100%" alt="灵犀"/>
-                </div>
+        <div class="header-lx">
+
+            <div class="logo">
+                <a class="img" href="#">
+                    <img src="{% static 'images/logo.png' %}" alt="灵犀"/>
+                </a>
+            </div>
+
+            <div class="menu-lx">
                 <div class="search">
                     <div class="ui icon input">
                         <input type="text" style="width:400px;border-radius:20px;" placeholder="输入关键词">
                         <i class="search icon"></i>
                     </div>
                 </div>
-            </div>
-            <div class="menu-lx four wide column">
-                <ul class="menu-ul">
+                <div class="header-menu">
+                    <ul class="menu-ul">
                     <li class="menu-text">新手帮助</li>
                     <li class="menu-text">关于我们</li>
                     <li class="menu-text">隐私保护</li>
                     <li class="menu-text">社区条款</li>
                     <li class="menu-text">联系我们</li>
                 </ul>
+                </div>
             </div>
-            <div class="message three wide column">
-                <div class="img-head">
-                    <img src="{% static 'images/Ellipse 1.png' %}" alt=""/>
-                </div>
-                <div class="name">
-                    <span class="username">Hoang Nguyen</span>
-                </div>
-                <div id="dropdown-btn"></div>
+
+            <div class="message">
+                {% if request.user %}
+                    <div class="ui basic segment user">
+                        <img class="ui avatar image user" src="/upload/{{ request.user.profile.profile_images }}">
+                        <span class="user-span">
+                            {{ request.user.username }}
+                        </span>
+                        <span class="user-span">
+                            <i class="chevron circle down icon"></i>
+                        </span>
+                    </div>
+
+{#                    <div class="img-head">#}
+{#                        <img src="" alt=""/>#}
+{#                    </div>#}
+{#                    <div class="name">#}
+{#                        <span class="username"></span>#}
+{#                    </div>#}
+
+                {% else %}
+                    <a href="#" class="login">登录或注册</a>
+                {% endif %}
+
 
             </div>
 
         </div>
-        <div class="content-lx ui grid">
-            <div class="left-lx three wide column">
+        <div class="content-lx">
+            <div class="left-lx">
                 <div class="btn-ask">
                     <button type="button" name="button" class="btn-ask-question">
                         <img src="{% static 'images/jiahao.png' %}" alt=""/>
@@ -107,9 +127,9 @@
                 </div>
             </div>
 
-            <div class="middle-lx ten wide column"></div>
+            <div class="middle-lx"></div>
 
-            <div class="right-lx three wide column">
+            <div class="right-lx">
                 <div class="questions-div">
                     <div>
                         <div class="question-title-lx">问题</div>
@@ -155,13 +175,15 @@
 
                 <div class="hot-questions-div">
                     <div class="new-hot-questions">新的热点问题</div>
+                    <div class="ui divider"></div>
                     {% for q in questions %}
                         <div class="hot-question-li">
-                            <p class="hot-question-p" style="background-image: url('../../upload/{{ q.questioner.profile_images }}');">
+                            <span class="hot-question-avatar">
+                                <img class="ui circular image" src="/upload/{{ q.questioner.profile_images }}">
+                            </span>
+                            <span class="hot-question-title">
                                 <a href="#">{{ q.title }}</a>
-                            </p>
-                            <img class="ui avatar image" src="/images/wireframe/square-image.png">
-                                <span>Username</span>
+                            </span>
                         </div>
                     {% endfor %}
                 </div>

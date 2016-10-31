@@ -18,17 +18,19 @@ body {
 
 .header-lx {
     height:80px;
+    background-color: #2F364A;
 }
 
 .content-lx{
-    width:100%;
+    width: auto;
     height: 900px
 }
 
 .left-lx {
-    width: 100%;
+    width: 16.67%;
     height: 100%;
     border-right:1px solid #D6DBE7;
+    float: left;
 }
 
 .middle-lx {
@@ -39,27 +41,31 @@ body {
 }
 
 .right-lx {
-    width: 100%;
+    width: 16.67%;
     height: 100%;
     background-color: #ECEFF6;
+    float: right;
 }
 
-.img-search {
-  width: auto;
-  height:100%;
-  background-color: #2F364A;
+.logo {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 16.67%;
+    float: left;
+    line-height: 80px;
 }
 
-.img {
-  margin: 20px 20px;
+.img > img {
+    position: relative;
+    transform: translate(0,50%);
   height: 42px;
   float: left;
 }
 
 .search {
-  margin: 24px 32px 24px 0;
-  height: 32px;
-  float: right;
+    margin-top: 23px;
+  width: auto;
+    float: left;
 }
 
 .search-text {
@@ -70,13 +76,23 @@ body {
 }
 
 .menu-lx {
-  width: 21.55%;
-  background-color: #18202D;
+    padding-left: 20px;
+  width: 66.66%;
+    height: 100%;
+    background-color: #2F364A;
+    float: left;
+}
+
+.header-menu {
+    width: 40%;
+    height: 100%;
+    float: right;
+    background-color: #18202D;
 }
 
 .menu-ul {
   overflow: hidden;
-  padding: 0px;
+  padding: 0;
   margin-top: 30px;
 }
 
@@ -90,9 +106,34 @@ body {
 }
 
 .message {
-  width: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+  width: 16.67%;
   height: 100%;
   background-color: #2F364A;
+    float: right;
+}
+
+.login {
+    line-height: 80px;
+    display: block;
+    text-align: center;
+}
+
+.ui.basic.segment.user {
+    line-height: 80px;
+    display: block;
+    text-align: center;
+    padding: 0;
+}
+
+.ui.basic.segment.user > .user-span {
+    margin-right: 15px;
+    color: white;
+}
+
+.ui.avatar.image.user {
+    margin-right: 15px;
 }
 
 .img-head{
@@ -341,21 +382,29 @@ body {
 .new-hot-questions {
   font-weight: bold;
   font-size: 16px;
-  padding-bottom: 11px;
-  border-bottom: 1px solid #D6DBE7;
 }
 
 .hot-question-li {
-  margin-top:17px;
+  margin-bottom: 10px;
+  min-height: 35px;
+  word-wrap: break-word;
 }
 
-.hot-question-p {
-  background-image: url("../images/avatar copy 2.png");
-  background-repeat: no-repeat;
-  background-position:0 5px;
-  padding-left: 31px;
-  padding-right: 23px;
-  color: #75C2FB;
+.hot-question-avatar {
+  float: left;
+  margin-right: 15px;
+}
+
+.hot-question-avatar > img {
+  width: 20px;
+    height: auto;
+}
+
+.hot-question-title {
+    display: block;
+    overflow: hidden;
+    line-height: 1.3;
+    word-wrap: break-word;
 }
 
 /*404页面样式*/
