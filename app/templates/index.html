@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>details</title>
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+<div class="ui basic segment">
+    <h1 class="ui hearder">所有问题</h1>
+</div>
+<div class="ui secondary pointing menu" style="border:solid rgba(34, 36, 38, 0.15) 1px;height:50px;margin-bottom:0px;">
+        <a href="?order_by=time" class="active item">Newest</a>
+        <a href="?order_by=votes" class="item">Votes</a>
+        <a href="?order_by=unanswer"class="item">Unanswered</a>
+        <div class="right menu">
+            <a class="item">
+                Question Per Page
+            </a>
+            <div class="item" style="padding-bottom:5px;">
+                <select class="ui dropdown" style="width:80px;background-color:rgb(245, 245, 245);padding:0px;" onChange="window.location.href=this.value">
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                </select>
+            </div>
+        </div>
+</div>
+
+
+{% for question in ques %}
+<div class="ui segment"style="margin-top:0px;border-radius:0px;margin-bottom:0px;">
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div class="ui basic segment">
+            <h4 class="ui hearder">{{question.title}}</h4>
+            <a href="#">{{ question.detail }}</a>
+            <div class="ui basic segment" style="padding-left:0px;margin-top:0px;">
+                <img class="ui avatar image" src="/upload/{{ question.questioner.profile_images }}">
+                {% ifequal question.questioner.title  '教授' %}
+                  <div class="ui purple horizontal label" style="text-align:center;">
+                      {{ question.questioner.title }}
+                  </div>
+                {% endifequal %}
+                {% ifequal question.questioner.title  '副教授' %}
+                  <div class="ui yellow horizontal label" style="text-align:center;">
+                      {{ question.questioner.title }}
+                  </div>
+                {% endifequal %}
+                {% ifequal question.questioner.title  '博士' %}
+                  <div class="ui teal horizontal label" style="text-align:center;">
+                      {{ question.questioner.title }}
+                  </div>
+                {% endifequal %}
+                {% ifequal question.questioner.title  '硕士' %}
+                  <div class="ui blue horizontal label" style="text-align:center;">
+                      {{ question.questioner.title }}
+                  </div>
+                {% endifequal %}
+                  <span style="color:grey;">Asked 24 minutes ago.</span>
+            </div>
+        </div>
+
+
+        </div>
+        <div class="one wide column">
+            <button type="button" name="button" class="ui basic circular icon button" style="width:60px;height:60px;border-color:grey;margin-top:50%;">
+                <span style="font-size:17px;">{{ question.views }}</span>
+            </button>
+            <span style="display:block;margin-top:10px;margin-left:10px;">
+                views
+            </span>
+        </div>
+        <div class="one wide column">
+            <button type="button" name="button" class="ui basic circular icon button" style="width:60px;height:60px;border-color:grey;margin-top:50%;">
+                <span style="font-size:17px;">{{ question.question_answer.count }}</span>
+            </button>
+            <span style="display:block;margin-top:10px;margin-left:10px;">
+                answer
+            </span>
+        </div>
+        <div class="one wide column">
+            <button type="button" name="button" class="ui basic circular icon button" style="width:60px;height:60px;border-color:grey;margin-top:50%;">
+                <span style="font-size:17px;">{{ question.votes }}</span>
+            </button>
+            <span style="display:block;margin-top:10px;margin-left:10px;">
+                votes
+            </span>
+        </div>
+    </div>
+
+</div>
+{% endfor %}
+
+
+
+
+
+<div class="ui pagination menu" style="margin-top:20px;margin-left:10px;">
+    <a class="item" href="?page=1">
+      first
+    </a>
+    {% for page_number in page_list %}
+        {% ifequal page_number ques.number %}
+        <a class="active item" >
+            {{ page_number }}
+        </a>
+        {% else %}
+            <a class="item" href="?page={{ page_number }}">
+              {{ page_number }}
+            </a>
+        {% endifequal %}
+    {% endfor %}
+    <a class="item" href="?page={{ ques.paginator.num_pages }}">
+      last
+    </a>
+</div>
+{% endblock %}
+
+{% block left %}
+<div class="left-lx">
+    <div class="btn-ask">
+        <button type="button" name="button" class="btn-ask-question">
+            <img src="{% static 'images/jiahao.png' %}" alt=""/>
+            <span class="ask-question-word">提问</span>
+        </button>
+    </div>
+    <ul class="ul-lx">
+        <li class="li-lx-active">
+            <a href="#" class="a-li-lx">
+                <img src="{% static 'images/wenhao.png' %}"/>
+                <span class="li-span-lx">问题</span>
+            </a>
+        </li>
+        <li class="li-lx">
+            <a href="#" class="a-li-lx">
+                <img src="{% static 'images/biaoqian.png' %}"/>
+                <span class="li-span-lx">标签</span>
+            </a>
+        </li>
+        <li class="li-lx">
+            <a href="#" class="a-li-lx">
+                <img src="{% static 'images/renwu_1.png' %}"/>
+                <span class="li-span-lx">用户</span>
+            </a>
+        </li>
+        <li class="li-lx">
+            <a href="#" class="a-li-lx">
+                <img src="{% static 'images/jianbei.png' %}"/>
+                <span class="li-span-lx">勋章</span>
+            </a>
+        </li>
+    </ul>
+{% endblock %}
