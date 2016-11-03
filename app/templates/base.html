@@ -1,12 +1,14 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+    {% block head %}
     <head>
         <meta charset="UTF-8">
         <title>details</title>
         <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
+    {% endblock %}
     <body>
         <div class="header-lx">
 
@@ -52,6 +54,7 @@
 
         </div>
         <div class="content-lx">
+            {% block left %}
             <div class="left-lx">
                 <div class="btn-ask">
                     <button type="button" name="button" class="btn-ask-question">
@@ -85,6 +88,8 @@
                         </a>
                     </li>
                 </ul>
+            {% endblock %}
+
 
                 <div class="recent-status-div">
                     {% if new_question %}
@@ -125,7 +130,10 @@
                 </div>
             </div>
 
-            <div class="middle-lx"></div>
+            <div class="middle-lx">
+                {% block content %}
+                {% endblock %}
+            </div>
 
             <div class="right-lx">
                 <div class="questions-div">

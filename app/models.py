@@ -16,9 +16,17 @@ class UserProfile(models.Model):
         ('male', u'男'),
         ('secret', u'保密'),
     )
+    TITLE_CHOICES = (
+        (u'教授', u'教授'),
+        (u'副教授', u'副教授'),
+        (u'博士', u'博士'),
+        (u'硕士', u'硕士'),
+    )
+    title = models.CharField(choices=TITLE_CHOICES, max_length=10, null=True, blank=True)
     sex = models.CharField(choices=SEX_CHOICES, max_length=10, null=True, blank=True)
     last_visit_dt = models.DateTimeField(null=True, blank=True)
     full_profile = models.BooleanField(default=False)
+
 
     def __str__(self):
         return str(self.belong_to)
@@ -30,9 +38,14 @@ class Question(models.Model):
     detail = models.CharField(max_length=6000, null=True, blank=True)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
-
+    views = models.IntegerField(default=0)
+    votes = models.IntegerField(default=0)
+    
     # def __str__(self):
     def __unicode__(self):
+        return self.title
+
+    def __str__(self):
         return self.title
 
 
