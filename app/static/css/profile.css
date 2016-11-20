@@ -1,0 +1,97 @@
+.ui.basic.segment.grid {
+    background-color: #fbfcff;
+    border-top:1px solid #D6DBE7;
+    padding-top: 30px;
+    padding-bottom: 18px;
+}
+
+.column {
+    position: relative;
+}
+
+.six.wide.column.profile {
+    padding-left: 50px;
+}
+
+.profile-ul {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+.profile-ul > li {
+    margin-bottom: 5px;
+}
+
+.profile-span {
+    float: left;
+}
+
+.profile.name {
+    font-size: 20px;
+    margin: 3px 0 5px 0;
+    height: auto;
+    float: none;
+}
+
+.badge {
+    position  : absolute;
+    top       : 50%;
+    left      : 0;
+    transform : translate(0,-50%);
+}
+
+.user-badge {
+    padding: 0 10px;
+    color: #fff;
+    margin-right: 15px;
+    line-height: 20px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #00adef;
+}
+
+.points-count {
+    font-size: 32px;
+    color: #3498db;
+    line-height: 45px;
+    display: inline-block;
+}
+
+.star {
+    font-size: 13px;
+    line-height: 15px;
+    margin-left: 5px;
+    display: inline-block;
+    text-align: left;
+}
+
+.star.icon {
+    color: #3498db;
+}
+
+.questions-count {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    color: #78829d!important;
+    font-size: 13px;
+    border-left: 4px solid #78829d;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    height: 39px;
+    line-height: .6;
+}
+
+.questions-count span {
+    font-size: 28px;
+    color: #78829d;
+    line-height: 14px;
+    margin-top: 14px;
+    display: block;
+    font-weight: bold;
+}

@@ -41,9 +41,10 @@ class Question(models.Model):
     views = models.IntegerField(default=0)
     votes = models.IntegerField(default=0)
 
+    def __unicode__(self):
+        return self.title
 
     def __str__(self):
-    #def __unicode__(self):
         return self.title
 
 
@@ -57,7 +58,6 @@ class Answer(models.Model):
     views = models.IntegerField(default=0)
     votes = models.IntegerField(default=0)
 
-    #def __unicode__(self):
     def __str__(self):
         return u'%s的答案' % self.answerer
 

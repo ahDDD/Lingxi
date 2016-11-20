@@ -17,8 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
-from app.views import base, details, deal_with_comment
+from app.views import base, index, profile, details, deal_with_comment
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +26,9 @@ urlpatterns = [
         name='question_details'),
     url(r'^questions/(?P<question_id>\d+)/answers/(?P<answer_id>\d+)/$',
         deal_with_comment, name='answer_comment')
+    url(r'^index/(?P<limit>\d+)?$', index, name='index'),
+    url(r'^(?P<limit>\d+)?$', index),
+    url(r'^profile/$', profile, name='profile')
 ]
 
 
