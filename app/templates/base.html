@@ -6,6 +6,7 @@
         <title>details</title>
         <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block css %}{% endblock %}
     </head>
     <body>
         <div class="header-lx">
@@ -127,7 +128,10 @@
                 </div>
             </div>
 
-            <div class="middle-lx"></div>
+            <div class="middle-lx">
+                {% block content %}
+                {% endblock %}
+            </div>
 
             <div class="right-lx">
                 <div class="questions-div">
