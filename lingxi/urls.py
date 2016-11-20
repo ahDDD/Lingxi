@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from app.views import base, index
+from app.views import base, index, profile
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^base/', base),
     url(r'^index/(?P<limit>\d+)?$', index, name='index'),
     url(r'^(?P<limit>\d+)?$', index),
+    url(r'^profile/$', profile, name='profile')
 ]
 
 

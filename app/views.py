@@ -1,21 +1,34 @@
+#coding:utf-8
 from django.shortcuts import render
 from app.models import Question, Answer, UserProfile
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
+import functools
 # Create your views here.
 
 
 def base(request):
     context = {}
-    questions = Question.objects.all().order_by('-create_time')
-    user_profile = UserProfile.objects.get(belong_to=request.user)
-    context['questions'] = questions[:5]
-    context['new_question'] = user_profile.user_question.all().order_by('-create_time').first()
-    context['new_answer'] = user_profile.user_answer.all().order_by().first()
-    user_profile = UserProfile.objects.all()
-    context['user_profile'] = user_profile
-    return render(request, 'base.html', context)
+    # 以下内容务必传出
+    # -----------------
+    hot_questions = Question.objects.all().order_by('-create_time')
+    # 总问题数
+    context['count_questions'] = len(hot_questions)
+    # 总人数
+    context['count_users'] = len(UserProfile.objects.all())
+    # 右侧热点top5
+    context['questions'] = hot_questions[:5]
+    if request.user.is_anonymous:
+        pass
+    else:
+        user_profile = UserProfile.objects.get(belong_to=request.user)
+        # 左侧你提问
+        context['new_question'] = user_profile.user_question.all().order_by('-create_time').first()
+        # 左侧你回答
+        context['new_answer'] = user_profile.user_answer.all().order_by().first()
+    # -----------------
+    return context
 
 def index(request, limit=15):
     context = {}
@@ -23,6 +36,22 @@ def index(request, limit=15):
         limit = 15
 
     hot_questions = Question.objects.all().order_by('-create_time')
+    # 总问题数
+    context['count_questions'] = len(hot_questions)
+    # 总人数
+    context['count_users'] = len(UserProfile.objects.all())
+    # 右侧热点top5
+    context['questions'] = hot_questions[:5]
+    if request.user.is_anonymous:
+        pass
+    else:
+        user_profile = UserProfile.objects.get(belong_to=request.user)
+        # 左侧你提问
+        context['new_question'] = user_profile.user_question.all().order_by('-create_time').first()
+        # 左侧你回答
+        context['new_answer'] = user_profile.user_answer.all().order_by().first()
+
+
     oreder_by = request.GET.get('order_by')
     print(oreder_by)
     if oreder_by == "time":
@@ -65,3 +94,12 @@ def index(request, limit=15):
     context['page_list'] = page_list
     context['ques'] = ques
     return render(request, 'index.html', context)
+
+
+def profile(request):
+    context = base(request)
+    user_proflie = UserProfile.objects.get(belong_to=request.user)
+    questions = Question.objects.filter(questioner=user_proflie).order_by("-update_time")
+    context['ques'] = questions
+    context['questions_count'] = len(questions)
+    return render(request, 'profile.html', context)

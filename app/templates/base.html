@@ -1,14 +1,15 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    {% block head %}
+
     <head>
         <meta charset="UTF-8">
         <title>details</title>
         <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block link %}
+        {% endblock %}
     </head>
-    {% endblock %}
     <body>
         <div class="header-lx">
 
@@ -139,13 +140,13 @@
                 <div class="questions-div">
                     <div>
                         <div class="question-title-lx">问题</div>
-                        <div class="number-data-lx">{{ questions|length }}</div>
+                        <div class="number-data-lx">{{ count_questions }}</div>
                     </div>
                 </div>
                 <div class="members-div">
                     <div>
                         <div class="question-title-lx">成员</div>
-                        <div class="number-data-lx">{{ user_profile|length }}</div>
+                        <div class="number-data-lx">{{ count_users }}</div>
                     </div>
                 </div>
 {#                <div class="tags-div">#}
