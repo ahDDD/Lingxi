@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^questions/(?P<question_id>\d+)/$', details,
         name='question_details'),
     url(r'^questions/(?P<question_id>\d+)/answers/(?P<answer_id>\d+)/$',
-        deal_with_comment, name='answer_comment')
+        deal_with_comment, name='answer_comment'),
     url(r'^index/(?P<limit>\d+)?$', index, name='index'),
     url(r'^(?P<limit>\d+)?$', index),
     url(r'^profile/$', profile, name='profile')
