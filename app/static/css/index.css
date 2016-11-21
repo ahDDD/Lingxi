@@ -1,181 +1,3 @@
-body {
-    padding: 0;
-    margin: 0;
-}
-
-.ui.grid + .grid {
-  margin-top: 0;
-}
-
-.ui.grid {
-  margin: 0;
-}
-
-.ui.grid > .column:not(.row) {
-  padding: 0;
-  margin: 0;
-}
-
-.header-lx {
-    height:80px;
-    background-color: #2F364A;
-}
-
-.content-lx{
-    width: auto;
-    height: 900px
-}
-
-.left-lx {
-    width:13.8%;
-    height: 100%;
-    float: left;
-}
-
-.middle-lx {
-    width: 68.75%;
-    height: auto;
-    float: left;
-    margin-bottom: 50px;
-}
-
-
-.right-lx {
-    width: 17.45%;
-    height: 100%;
-    background-color: #ECEFF6;
-    float: right;
-}
-
-.logo {
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 16.67%;
-    float: left;
-    line-height: 80px;
-}
-
-.img > img {
-    position: relative;
-    transform: translate(0,50%);
-  height: 42px;
-  float: left;
-}
-
-.search {
-    margin-top: 23px;
-  width: auto;
-    float: left;
-}
-
-.search-text {
-  width: 400px;
-  height: 28px;
-  border-radius: 16px;
-  border-width:0;
-}
-
-.menu-lx {
-    padding-left: 20px;
-  width: 66.66%;
-    height: 100%;
-    background-color: #2F364A;
-    float: left;
-}
-
-.header-menu {
-    width: 40%;
-    height: 100%;
-    float: right;
-    background-color: #18202D;
-}
-
-.menu-ul {
-  overflow: hidden;
-  padding: 0;
-  margin-top: 30px;
-}
-
-.menu-text {
-  width: 20%;
-  float: left;
-  font-size: 14px;
-  list-style:none;
-  color:#5D647D;
-  text-align: center;
-}
-
-.message {
-    padding-left: 20px;
-    padding-right: 20px;
-  width: 16.67%;
-  height: 100%;
-  background-color: #2F364A;
-    float: right;
-}
-
-.login {
-    line-height: 80px;
-    display: block;
-    text-align: center;
-}
-
-.ui.basic.segment.user {
-    line-height: 80px;
-    display: block;
-    text-align: center;
-    padding: 0;
-}
-
-.ui.basic.segment.user > .user-span {
-    margin-right: 15px;
-    color: white;
-}
-
-.ui.avatar.image.user {
-    margin-right: 15px;
-}
-
-.img-head{
-  margin: 25px 20px;
-  height: 30px;
-  float: left;
-}
-.name{
-  margin: 32px 5px;
-  height: 16px;
-  float: left;
-}
-
-.username{
-  color: white;
-}
-
-#dropdown-btn{
-  border-radius: 999px;
-  background-image: url('../images/xiala.png');
-  background-size: cover;
-  margin: 34px 5px;
-  height: 12px;
-  width: 11px;
-  float: left;
-}
-
-.btn-ask {
-  width: 100%;
-  height: 116px;
-  padding: 35px 20px;
-  border-bottom:1px solid #D6DBE7;
-  text-align: center;
-}
-
-.btn-ask-question {
-  height: 100%;
-  width: 160px;
-  background-color: #418ED6;
-  border-radius: 5px;
-  border-style: none;
-}
 
 .ask-question-word {
   color: white;
@@ -411,4 +233,32 @@ body {
 .middle-center-lx {
   padding-top: 61px;
   text-align: center;
+}
+
+.ui.basic.segment.question {
+    margin: 0;
+    border-bottom:1px solid #D6DBE7;
+}
+
+.ui.basic.circular.icon.button.info {
+    width:60px;
+    height:60px;
+    border-color:grey;
+    /*margin-top:50%;*/
+    margin-right: 15px;
+}
+
+.ui.secondary.pointing.menu.custom {
+    border-top: 1px solid #D6DBE7;
+    height: 50px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #D6DBE7;
+}
+
+.ui.secondary.pointing.menu.custom > .item {
+    color: #8c97b2;
+}
+
+.ui.secondary.pointing.menu.custom > .active {
+    border-color: #f39c12;
 }

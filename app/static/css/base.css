@@ -1,6 +1,8 @@
+
 body {
     padding: 0;
     margin: 0;
+    color: #6f7d95;
 }
 
 .ui.grid + .grid {
@@ -34,7 +36,7 @@ body {
 }
 
 .middle-lx {
-    width: auto;
+    width: 66.66%;
     height: auto;
     float: left;
     margin-bottom: 50px;

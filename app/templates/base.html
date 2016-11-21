@@ -1,14 +1,15 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    {% block head %}
+
     <head>
         <meta charset="UTF-8">
         <title>details</title>
         <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block link %}
+        {% endblock %}
     </head>
-    {% endblock %}
     <body>
         <div class="header-lx">
 
@@ -47,19 +48,9 @@
                             <i class="chevron circle down icon"></i>
                         </span>
                     </div>
-
-{#                    <div class="img-head">#}
-{#                        <img src="" alt=""/>#}
-{#                    </div>#}
-{#                    <div class="name">#}
-{#                        <span class="username"></span>#}
-{#                    </div>#}
-
                 {% else %}
                     <a href="#" class="login">登录或注册</a>
                 {% endif %}
-
-
             </div>
 
         </div>
@@ -102,20 +93,28 @@
 
 
                 <div class="recent-status-div">
-                    <div class="ask-lx">
-                        <p class="ask-p-lx">你提出了问题<a href="#" class="status-a-lx">怎样在未来 5 年内变成亿万富翁？</a>
-                        </p>
-                        <div class="time-lx">
-                            24 分钟以前
+                    {% if new_question %}
+                        <div class="ask-lx">
+                            <p class="ask-p-lx">你提出了问题<a href="#" class="status-a-lx">{{ new_question.title }}</a>
+                            </p>
+                            <div class="time-lx">
+                                {{ new_question.create_time|timesince }}以前
+                            </div>
                         </div>
-                    </div>
-                    <div class="answer-lx">
-                        <p class="answer-p-lx">你回答了问题<a href="#" class="status-a-lx">什么是设计工作中最吸引人的地方？</a>
-                        </p>
-                        <div class="time-lx">
-                            26 分钟以前
+                    {% else %}
+                    {% endif %}
+
+                    {% if new_answer %}
+                        <div class="answer-lx">
+                            <p class="ask-p-lx">你回答了问题<a href="#" class="status-a-lx">{{ new_answer.title }}</a>
+                            </p>
+                            <div class="time-lx">
+                                {{ new_answer.create_time|timesince }}以前
+                            </div>
                         </div>
-                    </div>
+                    {% else %}
+                    {% endif %}
+
                     <div class="accepted-lx">
                         <p class="accepted-p-lx">你赞同了答案<a href="#" class="status-a-lx">如何爱你的生活？</a>
                         </p>
@@ -141,13 +140,13 @@
                 <div class="questions-div">
                     <div>
                         <div class="question-title-lx">问题</div>
-                        <div class="number-data-lx">{{ questions|length }}</div>
+                        <div class="number-data-lx">{{ count_questions }}</div>
                     </div>
                 </div>
                 <div class="members-div">
                     <div>
                         <div class="question-title-lx">成员</div>
-                        <div class="number-data-lx">{{ user_profile|length }}</div>
+                        <div class="number-data-lx">{{ count_users }}</div>
                     </div>
                 </div>
 {#                <div class="tags-div">#}
