@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="ui segment middle">
+    <div class="middle-title-lx">
+      <div class="middle-title-left">
+        <a href="#" class="back-home-lx">
+          << Home
+        </a>
+      </div>
+      <div class="middle-title-right">
+        <h2 class="back-home-lx">{{ question.title }}</h2>
+      </div>
+    </div>
+    <div class="question-description-div">
+      <div class="question-description-left">
+        <div>
+          <button class="circular small ui icon basic button" style="display:block;margin:0 auto;">
+            <i class="angle up icon"></i>
+          </button>
+          <div class="ui blue label" style="margin-top:10px;margin-bottom:10px;">{{ question.views }}</div>
+          <button class="circular small ui icon basic button" style="display:block;margin:0 auto;">
+            <i class="angle down icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="question-description-right">
+        <div class="question-description-tags">
+          <div class="inverted green ui circular icon label">
+            <i class="checkmark icon"></i>
+            Answered
+          </div>
+          <div class="ui circular label" style="margin-left:21px;">
+            Life
+          </div>
+          <div class="ui circular label">
+            The-rich
+          </div>
+          <div class="ui circular label">
+            Hard-work
+          </div>
+        </div>
+
+        <div class="question-description-content">
+            {{ question.detail }}
+        </div>
+        <div class="question-description-message">
+          <img src="/upload/{{ question.questioner.profile_images }}" class="ui avatar image">
+
+          <div class="ui purple label">{{ question.questioner.title }}</div>
+          <span class="message-span-lx">Asked 24 minutes ago in <a class="message-a-lx" href="#">life Category</a></span>
+          <div class="description-right-options" style="float:right">
+            <div class="actions">
+              <a style="color:#8187A0;font-size:12px;">
+                Share
+                <i class="share icon"></i>
+              </a>
+              <a style="color:#8187A0;font-size:12px;">
+                Report
+                <i class="flag icon"></i>
+              </a>
+              <a style="color:#8187A0;font-size:12px;">
+                Coment(0)
+                <i class="comment icon"></i>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="answers-list-lx">
+      <div class="answers-list-title">
+        <span class="answers-numbers">{{ question.question_answer.all.count }} Answers</span>
+        <span class="answers-list-tags">
+          <a href="?answer_tag=oldest">Oldest</a>
+        </span>
+        <span class="answers-list-tags">
+          Active
+        </span>
+        <span class="answers-list-tags">
+          <a href="?answer_tag=votes">Votes</a>
+        </span>
+      </div>
+    </div>
+
+    {% if best_answers %}{% for best_answer in best_answers %}
+    <div class="answers-description-div2">
+      <div class="question-description-left">
+        <div>
+          <button class="circular small ui icon basic button" style="display:block;margin:0 auto;">
+            <i class="angle up icon"></i>
+          </button>
+          <div class="ui blue label" style="margin-top:10px;margin-bottom:10px;">{{ best_answer.views }}</div>
+          <button class="circular small ui icon basic button" style="display:block;margin:0 auto;">
+            <i class="angle down icon"></i>
+          </button>
+          <button class="circular small ui icon basic button" style="display:block;margin:9px auto;">
+            <i class="checkmark icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="question-description-right">
+          <div class="question-description-tags">
+            <div class="inverted orange ui circular icon label">
+              <i class="checkmark icon"></i>
+              Best answer
+            </div>
+          </div>
+        <div class="question-description-content">
+          {{ best_answer.content }}
+        </div>
+        <div class="question-description-message">
+          <img src="/upload/{{ best_answer.answerer.profile_images }}" class="ui avatar image">
+          <div class="ui red label">{{ best_answer.answerer.title }}</div>
+          <span class="message-span-lx">Answered 2 hours ago.</span>
+          <div class="description-right-options" style="float:right">
+            <div class="actions">
+              <a style="color:#8187A0;font-size:12px;">
+                Share
+                <i class="share icon"></i>
+              </a>
+              <a style="color:#8187A0;font-size:12px;">
+                Report
+                <i class="flag icon"></i>
+              </a>
+              <a style="color:#4183c4;font-size:12px;">
+                Coment({{ best_answer.under_comments.all.count }})
+                <i class="comment icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ui segment" style="box-shadow:none;margin-bottom:30px;padding-right:0;padding-left:0;padding-bottom:0px;">
+        {% for comment in best_answer.under_comments.all %}
+          <div class="comment-content-lx">
+            <p class="comment-p-lx">
+              {{ comment.comment }}
+              <span style="color:#8187A0;font-size:12px;display:block">15 minutes ago. Edit <i class="write icon"></i></span>
+
+            </p>
+            <div class="ui divider"></div>
+          </div>
+          {% endfor %}
+          <div class="add-comment-lx">
+            <a href="#" style="color:#75C2FB" >Add comment</a>
+          </div>
+          <form class="ui reply form" action="{% url 'answer_comment' question.id best_answer.id %}" method="post">
+              <textarea name='comment' rows="1" placeholder="Your Comment"></textarea>
+              {% csrf_token %}
+              <button type="submit" class="ui blue submit button comment">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% for answer in answers %}
+    <div class="answers-description-div2">
+      <div class="question-description-left">
+        <div>
+          <button class="circular small ui icon basic button" style="display:block;margin:0 auto;">
+            <i class="angle up icon"></i>
+          </button>
+          <div class="ui blue label" style="margin-top:10px;margin-bottom:10px;">{{ answer.views }}</div>
+          <button class="circular small ui icon basic button" style="display:block;margin:0 auto;">
+            <i class="angle down icon"></i>
+          </button>
+          <button class="circular small ui icon basic button" style="display:block;margin:9px auto;">
+            <i class="checkmark icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="question-description-right">
+        <div class="question-description-content">
+          {{ answer.content }}
+        </div>
+        <div class="question-description-message">
+          <img src="/upload/{{ answer.answerer.profile_images }}" class="ui avatar image">
+          <div class="ui red label">{{ answer.answerer.title }}</div>
+          <span class="message-span-lx">Answered 2 hours ago.</span>
+          <div class="description-right-options" style="float:right">
+            <div class="actions">
+              <a style="color:#8187A0;font-size:12px;">
+                Share
+                <i class="share icon"></i>
+              </a>
+              <a style="color:#8187A0;font-size:12px;">
+                Report
+                <i class="flag icon"></i>
+              </a>
+              <a style="color:#4183c4;font-size:12px;">
+                Coment(3)
+                <i class="comment icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ui segment" style="box-shadow:none;margin-bottom:30px;padding-right:0;padding-left:0;padding-bottom:0px;">
+        {% for comment in answer.under_comments.all %}
+          <div class="comment-content-lx">
+            <p class="comment-p-lx">
+              {{ comment.comment }}
+              <span style="color:#8187A0;font-size:12px;display:block">15 minutes ago. Edit <i class="write icon"></i></span>
+
+            </p>
+            <div class="ui divider"></div>
+          </div>
+        {% endfor %}
+          <div class="add-comment-lx">
+            <a href="#" style="color:#75C2FB" >Add comment</a>
+          </div>
+          <form class="ui reply form" action="{% url 'answer_comment' question.id answer.id %}" method="post">
+              <textarea name='comment' rows="1" placeholder="Your Comment"></textarea>
+              {% csrf_token %}
+              <button type="submit" class="ui blue submit button comment">Submit</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="your-anwser-lx">
+      <h4>Your Answer</h4>
+      <form class="ui reply form" method="post" action="{% url 'question_details' question.id%}">
+        <div class="field">
+          <div class="ui segment" style="padding:0">
+            <div class="ui menu" style="margin-bottom:0;border:0;box-shadow:none">
+              <a class="icon item"><i class="blue bold icon"></i></a>
+              <a class="icon item"><i class="italic icon"></i></a>
+              <a class="icon item"><i class="linkify icon"></i></a>
+              <a class="icon item"><i class="list icon"></i></a>
+            </div>
+            <div class="ui divider" style="margin:0;"></div>
+            <textarea name='answer' rows="3" placeholder="Your Anwser" style="border:0"></textarea>
+          </div>
+
+        </div>
+        {% csrf_token %}
+        <button type="submit" class="ui blue submit button">
+          Post Answer
+      </button>
+        <span>
+          By posting your answer, you agree to the <a href="#" class="message-a-lx">privacy policy</a> and <a class="message-a-lx" href="#">terms of service.</a>
+        </span>
+      </form>
+    </div>
+</div>
+
+
+{% endblock %}
