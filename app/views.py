@@ -5,6 +5,7 @@ from app.models import Question, Answer, UserProfile, Comment
 from app.forms import AnswerForm, CommentForm
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import PageNotAnInteger
 import functools
 # Create your views here.
@@ -96,7 +97,7 @@ def index(request, limit=15):
     context['ques'] = ques
     return render(request, 'index.html', context)
 
-
+@login_required
 def profile(request):
     context = base(request)
     user_proflie = UserProfile.objects.get(belong_to=request.user)

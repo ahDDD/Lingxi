@@ -1,0 +1,66 @@
+﻿Merge remote-tracking branch 'refs/remotes/ahDDD/master'
+
+# Conflicts:
+#	db.sqlite3
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   "Django\344\273\243\347\240\201\350\247\204\350\214\203.md"
+#	modified:   README.md
+#	modified:   app/__init__.py
+#	modified:   app/admin.py
+#	modified:   app/apps.py
+#	new file:   app/forms.py
+#	modified:   app/migrations/0001_initial.py
+#	new file:   app/migrations/0002_auto_20161105_1106.py
+#	new file:   app/migrations/0003_auto_20161119_2226.py
+#	new file:   app/migrations/0004_auto_20161119_2233.py
+#	new file:   app/migrations/0005_userprofile_title.py
+#	new file:   app/migrations/0006_auto_20161120_1245.py
+#	modified:   app/migrations/__init__.py
+#	modified:   app/models.py
+#	modified:   app/static/css/base.css
+#	new file:   app/static/css/details.css
+#	modified:   app/static/css/index.css
+#	new file:   app/static/css/profile.css
+#	modified:   app/static/images/articleimg.png
+#	modified:   app/static/js/jquery.js
+#	modified:   app/static/js/semantic.js
+#	modified:   app/templates/base.html
+#	new file:   app/templates/details.html
+#	modified:   app/templates/index.html
+#	new file:   app/templates/profile.html
+#	modified:   app/tests.py
+#	modified:   app/views.py
+#	modified:   lingxi/__init__.py
+#	modified:   lingxi/settings.py
+#	modified:   lingxi/urls.py
+#	modified:   lingxi/wsgi.py
+#	modified:   raw_src/badges.html
+#	modified:   raw_src/base.html
+#	modified:   raw_src/details.html
+#	modified:   raw_src/img/articleimg.png
+#	modified:   raw_src/index.html
+#	modified:   raw_src/login.html
+#	modified:   raw_src/popup.html
+#	modified:   raw_src/profile.html
+#	modified:   raw_src/users.html
+#	modified:   requirements.txt
+#	modified:   upload/user_profile_images/999pic_5281c33cbc368.jpg
+#	new file:   upload/user_profile_images/ypt_image.jpg
+#
+
